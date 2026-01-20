@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Roberto Carlos Rivera | Data & Improvement</title>
+  <title>Roberto Carlos Rivera | Data & Improvement Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     :root {
-      --primary: #0f172a; /* Azul oscuro elegante */
+      --primary: #0f172a;
       --secondary: #334155;
-      --accent: #0ea5e9; /* Azul brillante para llamadas a la acción */
+      --accent: #0ea5e9;
+      --accent-hover: #0284c7;
       --bg-light: #f8fafc;
       --white: #ffffff;
-      --text-gray: #475569;
+      --text-gray: #64748b;
+      --glass: rgba(255, 255, 255, 0.95);
     }
 
+    /* --- ESTILOS BASE --- */
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
@@ -24,290 +27,376 @@
       background-color: var(--bg-light);
       color: var(--primary);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* --- Header / Hero Section --- */
+    /* --- HEADER / HERO --- */
     header {
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: var(--white);
-      padding: 4rem 1.5rem;
+      padding: 5rem 1.5rem 6rem;
       text-align: center;
-      position: relative;
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Corte diagonal moderno */
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
     }
 
     .logo {
-      width: 120px;
-      height: 120px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       border: 4px solid var(--accent);
       object-fit: cover;
-      margin-bottom: 1rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 30px rgba(14, 165, 233, 0.3);
     }
 
     header h1 {
-      font-family: 'Playfair Display', serif; /* Toque elegante en títulos */
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
       margin: 0.5rem 0;
-      font-size: 2.8rem;
-      font-weight: 600;
+      letter-spacing: -1px;
     }
 
-    header p.subtitle {
-      font-size: 1.2rem;
+    .subtitle {
+      font-size: 1.25rem;
       color: #cbd5e1;
-      max-width: 600px;
-      margin: 0 auto 2rem auto;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-weight: 300;
     }
 
-    /* --- Navigation --- */
+    /* --- NAV --- */
     nav {
       background: rgba(255, 255, 255, 0.1);
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
+      display: inline-flex;
+      padding: 0.5rem 1rem;
       border-radius: 50px;
       backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     nav a {
       color: var(--white);
-      margin: 0 15px;
+      margin: 0 20px;
       text-decoration: none;
       font-weight: 500;
       font-size: 0.95rem;
-      transition: color 0.3s;
+      transition: all 0.3s;
     }
 
     nav a:hover {
       color: var(--accent);
+      transform: translateY(-2px);
     }
 
-    /* --- Layout General --- */
+    /* --- SECCIONES --- */
     section {
       padding: 4rem 1.5rem;
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
     }
 
     h2 {
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 3rem;
-      position: relative;
+      font-size: 2.2rem;
+      margin-bottom: 3.5rem;
       color: var(--primary);
+      position: relative;
     }
-
+    
     h2::after {
       content: '';
       display: block;
-      width: 60px;
+      width: 80px;
       height: 4px;
       background: var(--accent);
-      margin: 10px auto 0;
+      margin: 15px auto 0;
       border-radius: 2px;
     }
 
-    /* --- Métricas de Impacto (Highlights) --- */
+    /* --- MÉTRICAS --- */
     .metrics-container {
       display: flex;
       justify-content: center;
       gap: 2rem;
       flex-wrap: wrap;
-      margin-top: -3rem; /* Sube sobre el header */
-      margin-bottom: 2rem;
+      margin-top: -5rem;
+      margin-bottom: 3rem;
       position: relative;
       z-index: 10;
+      padding: 0 1rem;
     }
 
     .metric-card {
       background: var(--white);
-      padding: 1.5rem;
+      padding: 2rem;
       border-radius: 1rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
       text-align: center;
-      min-width: 200px;
+      flex: 1 1 200px;
+      max-width: 300px;
       border-top: 5px solid var(--accent);
+      transition: transform 0.3s;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-10px);
     }
 
     .metric-number {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 800;
       color: var(--primary);
       display: block;
+      line-height: 1;
+      margin-bottom: 0.5rem;
     }
 
-    .metric-label {
-      font-size: 0.9rem;
-      color: var(--text-gray);
-      font-weight: 600;
-    }
-
-    /* --- Proyectos (Nuevo y Mejorado) --- */
+    /* --- PROYECTOS (GRID) --- */
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
     }
 
     .project-card {
       background: var(--white);
-      border-radius: 1rem;
+      border-radius: 1.5rem;
       overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #e2e8f0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+      transition: all 0.4s ease;
+      border: 1px solid #f1f5f9;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+      border-color: var(--accent);
+    }
+
+    .project-header {
+      background: var(--primary);
+      padding: 1rem;
+      text-align: right;
+    }
+
+    .project-header i {
+      color: rgba(255,255,255,0.2);
+      font-size: 3rem;
     }
 
     .project-content {
-      padding: 1.5rem;
-    }
-
-    .project-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
+      padding: 2rem;
+      flex-grow: 1;
     }
 
     .project-role {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
       display: block;
     }
 
-    .project-desc {
-      color: var(--text-gray);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .impact-box {
-      background-color: #f0f9ff;
-      border-left: 4px solid var(--accent);
-      padding: 0.8rem;
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 700;
       margin-bottom: 1rem;
-      font-size: 0.9rem;
-      color: #0c4a6e;
-    }
-
-    .tech-stack {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .tech-tag {
-      background: #f1f5f9;
-      color: var(--secondary);
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-
-    /* --- Servicios --- */
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
-
-    .card {
-      background: var(--white);
-      border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-      padding: 2rem;
-      flex: 1 1 250px;
-      max-width: 300px;
-      text-align: center;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      border-bottom: 4px solid var(--accent);
-    }
-
-    .card h3 {
-      margin-top: 1rem;
       color: var(--primary);
+      line-height: 1.3;
     }
 
-    .icon-large {
-      font-size: 2.5rem;
+    .impact-badge {
+      background-color: #f0f9ff;
+      color: #0369a1;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      border: 1px solid #bae6fd;
+    }
+
+    .btn-details {
+      margin-top: auto;
+      text-align: center;
+      padding: 1.5rem;
+      border-top: 1px solid #f1f5f9;
       color: var(--accent);
-      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.3s;
     }
 
-    /* --- Softwares --- */
-    .softwares {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+    .project-card:hover .btn-details {
+      background: var(--accent);
+      color: white;
+    }
+
+    /* --- MODAL (LO NUEVO Y AVANZADO) --- */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: none; /* Oculto por defecto */
       justify-content: center;
       align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .software-item {
-      text-align: center;
-      width: 80px;
-    }
-
-    .software-item img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-      filter: grayscale(100%);
-      transition: filter 0.3s, transform 0.3s;
-      opacity: 0.7;
-    }
-
-    .software-item:hover img {
-      filter: grayscale(0%);
-      transform: scale(1.1);
+    .modal-overlay.active {
+      display: flex;
       opacity: 1;
     }
 
-    .software-item p {
-      margin-top: 0.5rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-gray);
+    .modal-content {
+      background: var(--white);
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      border-radius: 1.5rem;
+      overflow-y: auto;
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
     }
 
-    /* --- Contacto --- */
+    .modal-overlay.active .modal-content {
+      transform: scale(1);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: #f1f5f9;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--secondary);
+      transition: all 0.2s;
+      z-index: 10;
+    }
+
+    .close-modal:hover {
+      background: #e2e8f0;
+      color: var(--primary);
+      transform: rotate(90deg);
+    }
+
+    /* Estilos dentro del modal */
+    .modal-header {
+      background: var(--primary);
+      color: white;
+      padding: 3rem 2rem;
+      background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Textura sutil */
+    }
+
+    .modal-body {
+      padding: 2.5rem;
+    }
+
+    .privacy-notice {
+      background: #fff7ed;
+      border-left: 4px solid #f97316;
+      color: #9a3412;
+      padding: 1rem;
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+      border-radius: 0 8px 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .modal-grid { grid-template-columns: 1fr; }
+    }
+
+    .modal-img-placeholder {
+      background: #e2e8f0;
+      height: 250px;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .modal-img-placeholder::after {
+        content: "Imagen Ilustrativa";
+        position: absolute;
+        bottom: 10px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* --- TECH STACK --- */
+    .tech-pill {
+      background: #f1f5f9;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    /* --- CONTACTO --- */
     .contacto-container {
       background: var(--white);
-      padding: 3rem;
-      border-radius: 1rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      padding: 4rem 2rem;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
       text-align: center;
+      border: 1px solid #f1f5f9;
     }
 
     .btn-contact {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
-      margin: 10px;
-      padding: 1rem 2rem;
+      padding: 1rem 2.5rem;
       border-radius: 50px;
       text-decoration: none;
-      font-weight: bold;
-      transition: transform 0.2s;
+      font-weight: 700;
+      margin: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-
+    
     .btn-contact:hover {
-      transform: translateY(-3px);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
     .whatsapp { background-color: #25D366; color: white; }
@@ -317,10 +406,10 @@
     footer {
       background-color: var(--primary);
       color: #94a3b8;
-      padding: 2rem;
+      padding: 3rem;
       text-align: center;
       font-size: 0.9rem;
-      margin-top: 4rem;
+      margin-top: 5rem;
     }
   </style>
 </head>
@@ -328,12 +417,11 @@
 
   <header>
     <img src="https://avatars.githubusercontent.com/u/85600401?v=4" alt="Carlos Rivera" class="logo">
-    <h1>Carlos Rivera Flores</h1>
-    <p class="subtitle">Analista de Datos & Estadístico | Transformando datos complejos en eficiencia operativa y mejora continua.</p>
+    <h1>Roberto Carlos Rivera</h1>
+    <p class="subtitle">Especialista en Mejora Continua & Analista de Datos | R, Power Platform & BI</p>
     <nav>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#experiencia">Trayectoria</a>
+      <a href="#proyectos">Portafolio</a>
+      <a href="#habilidades">Habilidades</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
@@ -341,124 +429,106 @@
   <div class="metrics-container">
     <div class="metric-card">
       <span class="metric-number">60%</span>
-      <span class="metric-label">Reducción Tiempo Procesamiento</span>
+      <span class="metric-label">Menos tiempo en reportes</span>
     </div>
     <div class="metric-card">
       <span class="metric-number">40%</span>
-      <span class="metric-label">Ahorro en Operatividad</span>
+      <span class="metric-label">Ahorro operativo (Lean)</span>
     </div>
     <div class="metric-card">
       <span class="metric-number">15%</span>
-      <span class="metric-label">Mejora en Precisión Predictiva</span>
+      <span class="metric-label">Mejora en precisión</span>
     </div>
   </div>
 
   <section id="proyectos">
-    <h2>Casos de Éxito</h2>
+    <h2>Proyectos de Mejora</h2>
     <div class="project-grid">
       
-      <div class="project-card">
+      <div class="project-card" onclick="openModal(1)">
+        <div class="project-header">
+          <i class="fas fa-university"></i>
+        </div>
         <div class="project-content">
-          <span class="project-role">Rectoría UV | Mejora de Procesos</span>
-          <div class="project-title">Sistema de Análisis Institucional</div>
-          <p class="project-desc">Automatización de la generación de informes trimestrales complejos que consumían recursos excesivos del personal.</p>
-          <div class="impact-box">
-            <i class="fas fa-chart-line"></i> <strong>Impacto:</strong> Reducción del 60% en tiempos de entrega y eliminación de errores manuales.
+          <span class="project-role">Rectoría UV</span>
+          <h3 class="project-title">Sistema de Inteligencia Institucional Automatizado</h3>
+          <div class="impact-badge">
+            <i class="fas fa-arrow-down"></i> -60% Tiempos de Entrega
           </div>
-          <div class="tech-stack">
-            <span class="tech-tag">R</span>
-            <span class="tech-tag">Automatización</span>
-            <span class="tech-tag">Data Cleaning</span>
-          </div>
+          <p style="font-size: 0.9rem; color: #64748b;">Automatización completa del ciclo de reportes trimestrales utilizando R y dashboards interactivos.</p>
+        </div>
+        <div class="btn-details">
+          Ver caso completo <i class="fas fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" onclick="openModal(2)">
+        <div class="project-header">
+          <i class="fas fa-industry"></i>
+        </div>
         <div class="project-content">
-          <span class="project-role">Difrenosa | Optimización</span>
-          <div class="project-title">Automatización de Flujos Operativos</div>
-          <p class="project-desc">Diseño de flujos digitales para sustituir procesos repetitivos manuales y envío de correos masivos.</p>
-          <div class="impact-box">
-            <i class="fas fa-stopwatch"></i> <strong>Impacto:</strong> 40% de ahorro en tiempos operativos diarios.
+          <span class="project-role">Difrenosa</span>
+          <h3 class="project-title">Automatización de Flujos Operativos (RPA)</h3>
+          <div class="impact-badge">
+            <i class="fas fa-bolt"></i> -40% Carga Operativa
           </div>
-          <div class="tech-stack">
-            <span class="tech-tag">Power Apps</span>
-            <span class="tech-tag">Power Automate</span>
-            <span class="tech-tag">Power BI</span>
-          </div>
+          <p style="font-size: 0.9rem; color: #64748b;">Eliminación de tareas manuales repetitivas mediante Power Apps y limpieza de datos con scripts.</p>
+        </div>
+        <div class="btn-details">
+          Ver caso completo <i class="fas fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i>
         </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-card" onclick="openModal(3)">
+        <div class="project-header">
+          <i class="fas fa-chart-line"></i>
+        </div>
         <div class="project-content">
-          <span class="project-role">Consultoría | Business Intelligence</span>
-          <div class="project-title">Dashboard de Control de Incidencias</div>
-          <p class="project-desc">Implementación de un sistema de monitoreo de KPIs de ventas y compras para detección temprana de fallas.</p>
-          <div class="impact-box">
-            <i class="fas fa-eye"></i> <strong>Impacto:</strong> Visibilidad total de la cadena para decisiones estratégicas ágiles.
+          <span class="project-role">Consultoría Independiente</span>
+          <h3 class="project-title">Modelado Predictivo y Control Estadístico</h3>
+          <div class="impact-badge">
+            <i class="fas fa-bullseye"></i> +15% Precisión
           </div>
-          <div class="tech-stack">
-            <span class="tech-tag">Power BI</span>
-            <span class="tech-tag">SQL</span>
-            <span class="tech-tag">Modelado Estadístico</span>
-          </div>
+          <p style="font-size: 0.9rem; color: #64748b;">Aplicación de estadística multivariada para detectar patrones y prevenir desviaciones.</p>
+        </div>
+        <div class="btn-details">
+          Ver caso completo <i class="fas fa-chevron-right" style="font-size: 0.8rem; margin-left: 5px;"></i>
         </div>
       </div>
 
     </div>
   </section>
 
-  <section id="servicios">
-    <h2>Mis Servicios</h2>
-    <div class="services">
-      <div class="card">
-        <div class="icon-large"><i class="fas fa-chart-pie"></i></div>
-        <h3>Análisis Estadístico</h3>
-        <p>Estudios descriptivos, inferenciales y multivariados para fundamentar decisiones con datos duros.</p>
-      </div>
-      <div class="card">
-        <div class="icon-large"><i class="fas fa-robot"></i></div>
-        <h3>Automatización (RPA)</h3>
-        <p>Creación de scripts y flujos para eliminar tareas repetitivas y reducir el error humano.</p>
-      </div>
-      <div class="card">
-        <div class="icon-large"><i class="fas fa-laptop-code"></i></div>
-        <h3>Dashboards & BI</h3>
-        <p>Diseño de tableros interactivos que permiten visualizar el estado del negocio en tiempo real.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="softwares">
+  <section id="habilidades" style="background: white; border-radius: 2rem; margin-bottom: 4rem;">
     <h2>Stack Tecnológico</h2>
-    <div class="softwares">
-      <div class="software-item">
-        <img src="https://www.r-project.org/logo/Rlogo.png" alt="R">
-        <p>R Stats</p>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; text-align: center;">
+      <div>
+        <i class="fab fa-r-project" style="font-size: 3rem; color: #276dc3; margin-bottom: 1rem;"></i>
+        <h3 style="margin: 0;">R Stats</h3>
+        <p style="font-size: 0.9rem; color: #64748b;">Experto</p>
       </div>
-      <div class="software-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI">
-        <p>Power BI</p>
+      <div>
+        <i class="fas fa-database" style="font-size: 3rem; color: #e11d48; margin-bottom: 1rem;"></i>
+        <h3 style="margin: 0;">SQL & NoSQL</h3>
+        <p style="font-size: 0.9rem; color: #64748b;">Gestión de Datos</p>
       </div>
-      <div class="software-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" alt="Excel">
-        <p>Excel Adv.</p>
+      <div>
+        <i class="fas fa-chart-bar" style="font-size: 3rem; color: #f59e0b; margin-bottom: 1rem;"></i>
+        <h3 style="margin: 0;">Power BI</h3>
+        <p style="font-size: 0.9rem; color: #64748b;">Dashboards</p>
       </div>
-      <div class="software-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/SPSS_An_IBM_Company_logo.svg" alt="SPSS">
-        <p>SPSS</p>
-      </div>
-      <div class="software-item">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg" alt="MongoDB">
-        <p>MongoDB</p>
+      <div>
+        <i class="fas fa-cogs" style="font-size: 3rem; color: #059669; margin-bottom: 1rem;"></i>
+        <h3 style="margin: 0;">Power Apps</h3>
+        <p style="font-size: 0.9rem; color: #64748b;">Automatización</p>
       </div>
     </div>
   </section>
 
   <section id="contacto">
-    <h2>Hablemos de Eficiencia</h2>
+    <h2>Impulsa la Mejora Continua</h2>
     <div class="contacto-container">
-      <p style="margin-bottom: 2rem; font-size: 1.1rem;">¿Listo para optimizar los procesos de tu departamento? Estoy disponible para nuevos retos.</p>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem;">¿Buscas reducir desperdicios y optimizar tiempos? Hablemos de cómo mis herramientas pueden transformar tu departamento.</p>
       
       <a class="btn-contact whatsapp" href="https://wa.me/525653936212" target="_blank">
         <i class="fab fa-whatsapp"></i> WhatsApp
@@ -473,9 +543,116 @@
   </section>
 
   <footer>
-    <p>© 2026 Roberto Carlos Rivera Flores. Todos los derechos reservados.</p>
-    <p style="opacity: 0.6; font-size: 0.8rem;">Diseñado con enfoque en Datos y Resultados.</p>
+    <p>© 2026 Roberto Carlos Rivera Flores.</p>
   </footer>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></button>
+      
+      <div class="modal-header">
+        <span id="m-role" style="opacity: 0.8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Rol</span>
+        <h2 id="m-title" style="margin: 0.5rem 0 0; font-size: 2rem; text-align: left; color: white;">Título</h2>
+      </div>
+
+      <div class="modal-body">
+        <div class="privacy-notice">
+          <i class="fas fa-shield-alt" style="font-size: 1.5rem;"></i>
+          <div>
+            <strong>Privacidad de Datos:</strong> Las imágenes mostradas a continuación son representaciones ilustrativas y genéricas. Los datos reales y sensibles han sido omitidos para cumplir con acuerdos de confidencialidad.
+          </div>
+        </div>
+
+        <div class="modal-grid">
+          <div>
+            <h4 style="color: var(--primary);">El Desafío</h4>
+            <p id="m-desc" style="color: var(--text-gray); font-size: 0.95rem;">Descripción detallada.</p>
+            
+            <h4 style="color: var(--primary); margin-top: 1.5rem;">Tecnologías Aplicadas</h4>
+            <div id="m-techs"></div>
+          </div>
+          
+          <div>
+            <div class="modal-img-placeholder">
+               <i class="fas fa-chart-area"></i>
+            </div>
+             <div class="modal-img-placeholder" style="height: 150px;">
+               <i class="fas fa-table"></i>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
+          <h4 style="color: var(--primary);">Impacto Cuantificable</h4>
+          <p id="m-result" style="font-size: 1.1rem; font-weight: 500; color: var(--accent);"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Datos de los proyectos (Fáciles de editar aquí)
+    const projectsData = {
+      1: {
+        role: "Rectoría Universidad Veracruzana",
+        title: "Sistema de Análisis Institucional",
+        desc: "La institución enfrentaba retrasos críticos en la generación de informes trimestrales debido al procesamiento manual de grandes volúmenes de datos. Implementé un sistema integral en R que automatiza la limpieza, transformación y visualización. Esto permitió pasar de semanas de trabajo a un proceso de ejecución casi inmediata, liberando al personal para tareas de análisis estratégico.",
+        techs: ["R Language", "Data Cleaning", "Automatización", "Dashboards"],
+        result: "Reducción del 60% en el tiempo de elaboración de informes y eliminación total de errores de captura manual."
+      },
+      2: {
+        role: "Difrenosa",
+        title: "Automatización de Flujos Operativos",
+        desc: "Se identificaron cuellos de botella en la comunicación interna y procesos repetitivos de aprobación. Diseñé e implementé flujos automatizados con Power Automate y Power Apps que gestionan notificaciones y aprobaciones sin intervención humana. Además, integré scripts para depurar las bases de datos de incidencias.",
+        techs: ["Power Automate", "Power Apps", "Power BI", "Excel Avanzado"],
+        result: "Optimización del 40% en tiempos operativos y mejora sustancial en la trazabilidad de las incidencias."
+      },
+      3: {
+        role: "Consultoría Privada",
+        title: "Modelado Predictivo en Salud y Finanzas",
+        desc: "Desarrollo de modelos estadísticos avanzados para clientes externos. Mediante técnicas de inferencia estadística y regresión multivariada, logramos identificar patrones ocultos en históricos de datos clínicos y financieros, permitiendo anticipar escenarios futuros con mayor certeza.",
+        techs: ["Estadística Multivariada", "R", "Machine Learning", "Pruebas de Hipótesis"],
+        result: "Incremento del 15% en la precisión de las predicciones, facilitando decisiones basadas en evidencia sólida."
+      }
+    };
+
+    const modalOverlay = document.getElementById('modalOverlay');
+
+    function openModal(id) {
+      const data = projectsData[id];
+      // Llenar datos
+      document.getElementById('m-role').textContent = data.role;
+      document.getElementById('m-title').textContent = data.title;
+      document.getElementById('m-desc').textContent = data.desc;
+      document.getElementById('m-result').innerHTML = `<i class="fas fa-check-circle"></i> ${data.result}`;
+      
+      // Llenar pills de tecnología
+      const techContainer = document.getElementById('m-techs');
+      techContainer.innerHTML = '';
+      data.techs.forEach(tech => {
+        const span = document.createElement('span');
+        span.className = 'tech-pill';
+        span.textContent = tech;
+        techContainer.appendChild(span);
+      });
+
+      // Mostrar modal
+      modalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Cerrar si clic fuera del contenido
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+  </script>
 
 </body>
 </html>
