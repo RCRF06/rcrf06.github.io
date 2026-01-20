@@ -3,47 +3,219 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Carlos Rivera Consultora</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+  <title>Roberto Carlos Rivera | Data & Improvement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
+    :root {
+      --primary: #0f172a; /* Azul oscuro elegante */
+      --secondary: #334155;
+      --accent: #0ea5e9; /* Azul brillante para llamadas a la acción */
+      --bg-light: #f8fafc;
+      --white: #ffffff;
+      --text-gray: #475569;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f7f9fb;
-      color: #333;
+      background-color: var(--bg-light);
+      color: var(--primary);
+      line-height: 1.6;
     }
 
+    /* --- Header / Hero Section --- */
     header {
-      background: linear-gradient(to right, #2c3e50, #4ca1af);
-      color: white;
-      padding: 2rem 1rem;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: var(--white);
+      padding: 4rem 1.5rem;
       text-align: center;
+      position: relative;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Corte diagonal moderno */
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      object-fit: cover;
+      margin-bottom: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     }
 
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    nav {
-      margin-top: 1rem;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 10px;
-      text-decoration: none;
+      font-family: 'Playfair Display', serif; /* Toque elegante en títulos */
+      margin: 0.5rem 0;
+      font-size: 2.8rem;
       font-weight: 600;
     }
 
+    header p.subtitle {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+    }
+
+    /* --- Navigation --- */
+    nav {
+      background: rgba(255, 255, 255, 0.1);
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+    }
+
+    nav a {
+      color: var(--white);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* --- Layout General --- */
     section {
-      padding: 3rem 1rem;
-      max-width: 900px;
+      padding: 4rem 1.5rem;
+      max-width: 1000px;
       margin: auto;
     }
 
-    .services, .softwares {
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+      color: var(--primary);
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* --- Métricas de Impacto (Highlights) --- */
+    .metrics-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: -3rem; /* Sube sobre el header */
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .metric-card {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      text-align: center;
+      min-width: 200px;
+      border-top: 5px solid var(--accent);
+    }
+
+    .metric-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      font-weight: 600;
+    }
+
+    /* --- Proyectos (Nuevo y Mejorado) --- */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e2e8f0;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .project-role {
+      font-size: 0.85rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .project-desc {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .impact-box {
+      background-color: #f0f9ff;
+      border-left: 4px solid var(--accent);
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #0c4a6e;
+    }
+
+    .tech-stack {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-tag {
+      background: #f1f5f9;
+      color: var(--secondary);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* --- Servicios --- */
+    .services {
       display: flex;
       flex-wrap: wrap;
       gap: 1.5rem;
@@ -51,128 +223,258 @@
     }
 
     .card {
-      background: white;
+      background: var(--white);
       border-radius: 1rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 1.5rem;
-      max-width: 250px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      padding: 2rem;
+      flex: 1 1 250px;
+      max-width: 300px;
       text-align: center;
+      transition: 0.3s;
     }
 
-    .softwares img {
-      max-width: 60px;
+    .card:hover {
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .card h3 {
+      margin-top: 1rem;
+      color: var(--primary);
+    }
+
+    .icon-large {
+      font-size: 2.5rem;
+      color: var(--accent);
       margin-bottom: 1rem;
     }
 
-    .contacto {
-      text-align: center;
-      margin-top: 2rem;
+    /* --- Softwares --- */
+    .softwares {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
     }
 
-    .whatsapp {
-      display: inline-block;
-      margin-top: 1rem;
-      background-color: #25D366;
-      color: white;
-      padding: 0.8rem 1.5rem;
+    .software-item {
+      text-align: center;
+      width: 80px;
+    }
+
+    .software-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      transition: filter 0.3s, transform 0.3s;
+      opacity: 0.7;
+    }
+
+    .software-item:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.1);
+      opacity: 1;
+    }
+
+    .software-item p {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-gray);
+    }
+
+    /* --- Contacto --- */
+    .contacto-container {
+      background: var(--white);
+      padding: 3rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px;
+      padding: 1rem 2rem;
       border-radius: 50px;
       text-decoration: none;
       font-weight: bold;
+      transition: transform 0.2s;
     }
+
+    .btn-contact:hover {
+      transform: translateY(-3px);
+    }
+
+    .whatsapp { background-color: #25D366; color: white; }
+    .linkedin { background-color: #0077b5; color: white; }
+    .email { background-color: var(--secondary); color: white; }
 
     footer {
-      background-color: #2c3e50;
-      color: white;
-      padding: 1rem;
+      background-color: var(--primary);
+      color: #94a3b8;
+      padding: 2rem;
       text-align: center;
       font-size: 0.9rem;
+      margin-top: 4rem;
     }
-
-    img.logo {
-      max-width: 120px;
-      border-radius: 10px;
-      margin-bottom: 1rem;
-    }
-
   </style>
 </head>
 <body>
 
   <header>
-    <img src="https://avatars.githubusercontent.com/u/85600401?v=4" alt="Logotipo" class="logo">
-    <h1>Carlos Rivera Consultora</h1>
+    <img src="https://avatars.githubusercontent.com/u/85600401?v=4" alt="Carlos Rivera" class="logo">
+    <h1>Carlos Rivera Flores</h1>
+    <p class="subtitle">Analista de Datos & Estadístico | Transformando datos complejos en eficiencia operativa y mejora continua.</p>
     <nav>
+      <a href="#proyectos">Proyectos</a>
       <a href="#servicios">Servicios</a>
-      <a href="#experiencia">Experiencia</a>
-      <a href="#softwares">Softwares</a>
+      <a href="#experiencia">Trayectoria</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </header>
 
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <div class="services">
-      <div class="card">
-        <h3>Análisis Estadístico</h3>
-        <p>Estudios descriptivos, inferenciales y análisis multivariado para proyectos académicos y profesionales.</p>
+  <div class="metrics-container">
+    <div class="metric-card">
+      <span class="metric-number">60%</span>
+      <span class="metric-label">Reducción Tiempo Procesamiento</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-number">40%</span>
+      <span class="metric-label">Ahorro en Operatividad</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-number">15%</span>
+      <span class="metric-label">Mejora en Precisión Predictiva</span>
+    </div>
+  </div>
+
+  <section id="proyectos">
+    <h2>Casos de Éxito</h2>
+    <div class="project-grid">
+      
+      <div class="project-card">
+        <div class="project-content">
+          <span class="project-role">Rectoría UV | Mejora de Procesos</span>
+          <div class="project-title">Sistema de Análisis Institucional</div>
+          <p class="project-desc">Automatización de la generación de informes trimestrales complejos que consumían recursos excesivos del personal.</p>
+          <div class="impact-box">
+            <i class="fas fa-chart-line"></i> <strong>Impacto:</strong> Reducción del 60% en tiempos de entrega y eliminación de errores manuales.
+          </div>
+          <div class="tech-stack">
+            <span class="tech-tag">R</span>
+            <span class="tech-tag">Automatización</span>
+            <span class="tech-tag">Data Cleaning</span>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Modelado Bayesiano</h3>
-        <p>Aplicación de métodos bayesianos en contextos médicos, sociales y ambientales.</p>
+
+      <div class="project-card">
+        <div class="project-content">
+          <span class="project-role">Difrenosa | Optimización</span>
+          <div class="project-title">Automatización de Flujos Operativos</div>
+          <p class="project-desc">Diseño de flujos digitales para sustituir procesos repetitivos manuales y envío de correos masivos.</p>
+          <div class="impact-box">
+            <i class="fas fa-stopwatch"></i> <strong>Impacto:</strong> 40% de ahorro en tiempos operativos diarios.
+          </div>
+          <div class="tech-stack">
+            <span class="tech-tag">Power Apps</span>
+            <span class="tech-tag">Power Automate</span>
+            <span class="tech-tag">Power BI</span>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Consultoría en Investigación</h3>
-        <p>Asesoría personalizada para tesis, artículos científicos y proyectos de datos.</p>
+
+      <div class="project-card">
+        <div class="project-content">
+          <span class="project-role">Consultoría | Business Intelligence</span>
+          <div class="project-title">Dashboard de Control de Incidencias</div>
+          <p class="project-desc">Implementación de un sistema de monitoreo de KPIs de ventas y compras para detección temprana de fallas.</p>
+          <div class="impact-box">
+            <i class="fas fa-eye"></i> <strong>Impacto:</strong> Visibilidad total de la cadena para decisiones estratégicas ágiles.
+          </div>
+          <div class="tech-stack">
+            <span class="tech-tag">Power BI</span>
+            <span class="tech-tag">SQL</span>
+            <span class="tech-tag">Modelado Estadístico</span>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 
-  <section id="experiencia">
-    <h2>Experiencia</h2>
-    <p>Soy Licenciado en Estadística por la Universidad Veracruzana. He trabajado como consultor privado con profesionales del área médica y social, colaborando en estudios clínicos, análisis de encuestas y evaluación de políticas públicas.</p>
-    <p>También he desarrollado dashboards, análisis exploratorios y herramientas interactivas en R y Excel, trabajando con bases de datos institucionales.</p>
+  <section id="servicios">
+    <h2>Mis Servicios</h2>
+    <div class="services">
+      <div class="card">
+        <div class="icon-large"><i class="fas fa-chart-pie"></i></div>
+        <h3>Análisis Estadístico</h3>
+        <p>Estudios descriptivos, inferenciales y multivariados para fundamentar decisiones con datos duros.</p>
+      </div>
+      <div class="card">
+        <div class="icon-large"><i class="fas fa-robot"></i></div>
+        <h3>Automatización (RPA)</h3>
+        <p>Creación de scripts y flujos para eliminar tareas repetitivas y reducir el error humano.</p>
+      </div>
+      <div class="card">
+        <div class="icon-large"><i class="fas fa-laptop-code"></i></div>
+        <h3>Dashboards & BI</h3>
+        <p>Diseño de tableros interactivos que permiten visualizar el estado del negocio en tiempo real.</p>
+      </div>
+    </div>
   </section>
 
   <section id="softwares">
-    <h2>Softwares que manejo</h2>
+    <h2>Stack Tecnológico</h2>
     <div class="softwares">
-      <div class="card">
+      <div class="software-item">
         <img src="https://www.r-project.org/logo/Rlogo.png" alt="R">
-        <p><strong>R</strong></p>
+        <p>R Stats</p>
       </div>
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" alt="Excel">
-        <p><strong>Excel</strong></p>
-      </div>
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/SPSS_An_IBM_Company_logo.svg" alt="SPSS">
-        <p><strong>SPSS</strong></p>
-      </div>
-      <div class="card">
+      <div class="software-item">
         <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="Power BI">
-        <p><strong>Power BI</strong></p>
+        <p>Power BI</p>
       </div>
-      <div class="card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Google_Workspace_Logo.svg" alt="R">
-        <p><strong>Google Workspace</strong></p>
+      <div class="software-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/Microsoft_Office_Excel_%282019%E2%80%93present%29.svg" alt="Excel">
+        <p>Excel Adv.</p>
+      </div>
+      <div class="software-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/SPSS_An_IBM_Company_logo.svg" alt="SPSS">
+        <p>SPSS</p>
+      </div>
+      <div class="software-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg" alt="MongoDB">
+        <p>MongoDB</p>
       </div>
     </div>
   </section>
 
-  <section id="contacto" class="contacto">
-    <h2>Contacto</h2>
-    <p>¿Necesitas asesoría o colaboración en tu proyecto?</p>
-    <a class="whatsapp" href="https://wa.me/522281692762" target="_blank">Escríbeme por WhatsApp</a>
-    <section id="contacto" class="contacto">
-    <h2></h2>
-    <a class="whatsapp" href="https://www.linkedin.com/in/carlosrrff/" target="_blank">Sígueme en LinkedIn</a>
-    <section id="contacto" class="contacto">
-    <h2></h2>
-    <a class="whatsapp" href="mailto:carlos.rrf06@gmail.com" target="_blank">Escríbeme un correo</a>
+  <section id="contacto">
+    <h2>Hablemos de Eficiencia</h2>
+    <div class="contacto-container">
+      <p style="margin-bottom: 2rem; font-size: 1.1rem;">¿Listo para optimizar los procesos de tu departamento? Estoy disponible para nuevos retos.</p>
+      
+      <a class="btn-contact whatsapp" href="https://wa.me/525653936212" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a class="btn-contact linkedin" href="https://www.linkedin.com/in/carlosrrff/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a class="btn-contact email" href="mailto:carlos.rrf06@gmail.com">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+    </div>
   </section>
 
   <footer>
-    © 2025 Carlos Rivera Consultora
+    <p>© 2026 Roberto Carlos Rivera Flores. Todos los derechos reservados.</p>
+    <p style="opacity: 0.6; font-size: 0.8rem;">Diseñado con enfoque en Datos y Resultados.</p>
   </footer>
 
 </body>
