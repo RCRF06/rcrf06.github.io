@@ -6,7 +6,7 @@
   <title>R Carlos Rivera Flores | Data & Improvement Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+   
   <style>
     :root {
       --primary: #0f172a;
@@ -241,7 +241,7 @@
       color: white;
     }
 
-    /* --- MODAL (LO NUEVO Y AVANZADO) --- */
+    /* --- MODAL (VENTANA DE PROYECTO) --- */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -251,7 +251,7 @@
       background: rgba(15, 23, 42, 0.8);
       backdrop-filter: blur(8px);
       z-index: 1000;
-      display: none; /* Oculto por defecto */
+      display: none;
       justify-content: center;
       align-items: center;
       opacity: 0;
@@ -302,12 +302,11 @@
       transform: rotate(90deg);
     }
 
-    /* Estilos dentro del modal */
     .modal-header {
       background: var(--primary);
       color: white;
       padding: 3rem 2rem;
-      background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Textura sutil */
+      background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
     }
 
     .modal-body {
@@ -337,29 +336,7 @@
       .modal-grid { grid-template-columns: 1fr; }
     }
 
-    .modal-img-placeholder {
-      background: #e2e8f0;
-      height: 250px;
-      border-radius: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #94a3b8;
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .modal-img-placeholder::after {
-        content: "Imagen Ilustrativa";
-        position: absolute;
-        bottom: 10px;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-/* --- ESTILOS DE LA IMAGEN REAL Y EL ZOOM --- */
+    /* --- ESTILOS DE LA IMAGEN REAL (Preview pequeña) --- */
     .project-img-real {
       width: 100%;
       border-radius: 1rem;
@@ -368,43 +345,51 @@
       background-color: #e2e8f0;
       display: block;
       cursor: zoom-in;
-      /* Transición suave para posición y tamaño */
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: transform 0.2s;
+    }
+    
+    .project-img-real:hover {
+        transform: scale(1.02); /* Efecto sutil al pasar el mouse */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* Clase activa para el Zoom Centrado */
-    .project-img-real.zoomed {
-      position: fixed;       /* Se 'despega' del flujo normal */
-      top: 50%;              /* Se mueve a la mitad vertical */
-      left: 50%;             /* Se mueve a la mitad horizontal */
-      transform: translate(-50%, -50%) scale(1); /* Se centra exactamente */
-      
-      width: auto;           /* Deja que la imagen tome su ancho natural */
-      height: auto;          /* Deja que tome su alto natural */
-      max-width: 90vw;       /* Pero que no pase del 90% del ancho de pantalla */
-      max-height: 85vh;      /* Y que no pase del 85% del alto */
-      
-      z-index: 9999;         /* Se pone ENFRENTE de todo, incluso del modal */
-      box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.7); /* Oscurece el fondo */
+    /* --- ESTILOS DEL VISOR (ZOOM GRANDE EXTERNO) --- */
+    .visor-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9); /* Fondo muy oscuro */
+      z-index: 2000; /* POR ENCIMA DEL MODAL (que es 1000) */
+      display: none;
+      justify-content: center;
+      align-items: center;
       cursor: zoom-out;
-      border-radius: 0.5rem;
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-/* Esta clase se agregará cuando des clic */
-.project-img-real.zoomed {
-  transform: scale(1.7); /* Aumenta el tamaño un 70% */
-  z-index: 100; /* Se pone por encima del texto */
-  box-shadow: 0 25px 50px rgba(0,0,0,0.5); /* Sombra fuerte para dar efecto 3D */
-  cursor: zoom-out; /* El cursor se convierte en lupa - */
-}
+    .visor-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
 
-/* Ajuste para celulares (para que no se salga de la pantalla) */
-@media (max-width: 768px) {
-  .project-img-real.zoomed {
-    transform: scale(1.2); /* En celular solo aumenta un 20% */
-  }
-}
-}
+    .visor-overlay img {
+      max-width: 90vw;   /* No más ancho que el 90% de la pantalla */
+      max-height: 90vh;  /* No más alto que el 90% de la pantalla */
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      object-fit: contain; /* Asegura que la imagen completa se vea sin cortes */
+      transform: scale(0.95);
+      transition: transform 0.3s;
+    }
+
+    .visor-overlay.active img {
+      transform: scale(1);
+    }
+
     /* --- TECH STACK --- */
     .tech-pill {
       background: #f1f5f9;
@@ -574,7 +559,7 @@
     <h2>¡Impúlsate!</h2>
     <div class="contacto-container">
       <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 2rem;">¿Buscas ir más allá con tus datos? Hablemos de cómo mis herramientas pueden transformar tus decisiones </p>
-      
+       
       <a class="btn-contact whatsapp" href="https://wa.me/525653936212" target="_blank">
         <i class="fab fa-whatsapp"></i> WhatsApp
       </a>
@@ -590,7 +575,7 @@
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
       <button class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></button>
-      
+       
       <div class="modal-header">
         <span id="m-role" style="opacity: 0.8; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Rol</span>
         <h2 id="m-title" style="margin: 0.5rem 0 0; font-size: 2rem; text-align: left; color: white;">Título</h2>
@@ -608,14 +593,14 @@
           <div>
             <h4 style="color: var(--primary);">El desafío</h4>
             <p id="m-desc" style="color: var(--text-gray); font-size: 0.95rem;">Descripción detallada.</p>
-            
+             
             <h4 style="color: var(--primary); margin-top: 1.5rem;">Tecnologías Aplicadas</h4>
             <div id="m-techs"></div>
           </div>
-          
+           
           <div>
-            <img id="m-img-1" src="" alt="Vista Principal" class="project-img-real" onclick="toggleZoom(this)">
-            <img id="m-img-2" src="" alt="Vista Detalle" class="project-img-real" style="height: 150px;" onclick="toggleZoom(this)">
+            <img id="m-img-1" src="" alt="Vista Principal" class="project-img-real" onclick="abrirVisor(this)">
+            <img id="m-img-2" src="" alt="Vista Detalle" class="project-img-real" style="height: 150px;" onclick="abrirVisor(this)">
           </div>
         </div>
 
@@ -627,8 +612,12 @@
     </div>
   </div>
 
+  <div id="visor-overlay" class="visor-overlay" onclick="cerrarVisor()">
+    <img id="visor-img" src="" alt="Zoom Imagen">
+  </div>
+
   <script>
-    // Datos de los proyectos (Fáciles de editar aquí)
+    // Datos de los proyectos
     const projectsData = {
       1: {
         role: "Rectoría Universidad Veracruzana",
@@ -661,6 +650,7 @@
 
     const modalOverlay = document.getElementById('modalOverlay');
 
+    // --- FUNCIÓN PARA ABRIR MODAL DE PROYECTO ---
     function openModal(id) {
       const data = projectsData[id];
       // Llenar datos
@@ -668,12 +658,12 @@
       document.getElementById('m-title').textContent = data.title;
       document.getElementById('m-desc').textContent = data.desc;
       document.getElementById('m-result').innerHTML = `<i class="fas fa-check-circle"></i> ${data.result}`;
+      
       const img1 = document.getElementById('m-img-1');
       const img2 = document.getElementById('m-img-2');
       img1.src = data.img1 || 'https://via.placeholder.com/600x400'; 
       img2.src = data.img2 || 'https://via.placeholder.com/600x200';
-      
-      
+       
       // Llenar pills de tecnología
       const techContainer = document.getElementById('m-techs');
       techContainer.innerHTML = '';
@@ -689,70 +679,36 @@
       document.body.style.overflow = 'hidden'; // Evitar scroll de fondo
     }
 
+    // --- FUNCIÓN PARA CERRAR MODAL DE PROYECTO ---
     function closeModal() {
       modalOverlay.classList.remove('active');
       document.body.style.overflow = 'auto';
     }
 
-    // Cerrar si clic fuera del contenido
+    // Cerrar si clic fuera del contenido del modal
     modalOverlay.addEventListener('click', (e) => {
       if (e.target === modalOverlay) {
         closeModal();
       }
     });
-    // --- PEGAR ESTO AL FINAL DE TU SCRIPT ---
-    
-    function toggleZoom(element) {
-      // Opcional: Si haces clic en una, que la otra se cierre
-      const images = document.querySelectorAll('.project-img-real');
-      images.forEach(img => {
-        if (img !== element) {
-          img.classList.remove('zoomed');
-        }
-      });
 
-      // Activar o desactivar el zoom en la imagen cliqueada
-      element.classList.toggle('zoomed');
+    // --- NUEVO: FUNCIONES PARA EL VISOR (ZOOM) ---
+    const visor = document.getElementById('visor-overlay');
+    const visorImg = document.getElementById('visor-img');
+
+    function abrirVisor(elementoImg) {
+      // 1. Copiamos la ruta de la imagen clickeada
+      visorImg.src = elementoImg.src;
+      // 2. Mostramos el visor oscuro
+      visor.classList.add('active');
     }
 
-    // Truco extra: Si cierras el modal, quitar el zoom para la próxima vez
-    const originalCloseModal = closeModal; // Guardamos tu función original
-    closeModal = function() {
-      // Quitamos el zoom de todas las imágenes
-      document.querySelectorAll('.project-img-real').forEach(img => img.classList.remove('zoomed'));
-      // Ejecutamos la función de cerrar normal
-      originalCloseModal();
-    }
-    // --- FUNCIÓN PARA EL ZOOM CENTRADO ---
-    function toggleZoom(element) {
-      // 1. Si hay otra imagen con zoom, ciérrala primero
-      const images = document.querySelectorAll('.project-img-real');
-      images.forEach(img => {
-        if (img !== element) {
-          img.classList.remove('zoomed');
-        }
-      });
-
-      // 2. Activa o desactiva el zoom en la imagen que clicaste
-      element.classList.toggle('zoomed');
-      
-      // 3. Evita que el clic se propague y cierre el modal accidentalmente
-      event.stopPropagation();
+    function cerrarVisor() {
+      // Ocultamos el visor
+      visor.classList.remove('active');
+      // No devolvemos el scroll aquí porque el Modal de abajo sigue abierto
     }
 
-    // --- MODIFICAR LA FUNCIÓN DE CERRAR ---
-    // Guardamos tu función original de cerrar
-    const originalClose = closeModal; 
-    
-    // Sobrescribimos closeModal para asegurarnos que quite el zoom primero
-    closeModal = function() {
-      // Quita el zoom de todas las imágenes
-      document.querySelectorAll('.project-img-real').forEach(img => {
-        img.classList.remove('zoomed');
-      });
-      // Ejecuta el cierre normal
-      originalClose();
-    }
   </script>
 
 </body>
