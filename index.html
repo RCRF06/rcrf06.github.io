@@ -359,7 +359,14 @@
         text-transform: uppercase;
         letter-spacing: 1px;
     }
-
+    .project-img-real {
+  width: 100%;
+  border-radius: 1rem;
+  object-fit: cover; /* Ajusta la foto sin deformarla */
+  margin-bottom: 1rem;
+  background-color: #e2e8f0; /* Color de fondo mientras carga */
+  display: block;
+}
     /* --- TECH STACK --- */
     .tech-pill {
       background: #f1f5f9;
@@ -569,12 +576,8 @@
           </div>
           
           <div>
-            <div class="modal-img-placeholder">
-               <i class="fas fa-chart-area"></i>
-            </div>
-             <div class="modal-img-placeholder" style="height: 150px;">
-               <i class="fas fa-table"></i>
-            </div>
+            <img id="m-img-1" src="" alt="Vista Principal" class="project-img-real">
+            <img id="m-img-2" src="" alt="Vista Detalle" class="project-img-real" style="height: 150px;">
           </div>
         </div>
 
@@ -594,21 +597,27 @@
         title: "Sistema de análisis institucional",
         desc: "La institución enfrentaba retrasos críticos en la generación de informes trimestrales debido al procesamiento manual de grandes volúmenes de datos. Implementé un sistema integral en R que automatiza la limpieza, transformación y visualización. Esto permitió pasar de semanas de trabajo a un proceso de ejecución casi inmediata, liberando al personal para tareas de análisis estratégico.",
         techs: ["R language", "Limpieza de datos", "Automatización", "Dashboards"],
-        result: "Reducción del 60% en el tiempo de elaboración de informes y eliminación total de errores de captura manual."
+        result: "Reducción del 60% en el tiempo de elaboración de informes y eliminación total de errores de captura manual.",
+        img1: "img/Proyecto 1_1.png", 
+        img2: "img/Proyecto 1_1.png"
       },
       2: {
         role: "Sector privado",
         title: "Automatización de flujos operativos",
         desc: "Se identificaron cuellos de botella en la comunicación interna y procesos repetitivos de aprobación. Diseñé e implementé flujos automatizados con Power Automate y Power Apps que gestionan notificaciones y aprobaciones sin intervención humana. Además, integré scripts para depurar las bases de datos de incidencias.",
         techs: ["Power Automate", "Power BI", "Excel"],
-        result: "Optimización del 40% en tiempos operativos y mejora sustancial en la trazabilidad de las incidencias."
+        result: "Optimización del 40% en tiempos operativos y mejora sustancial en la trazabilidad de las incidencias.",
+        img1: "img/Proyecto 1_1.png", 
+        img2: "img/Proyecto 1_1.png"
       },
       3: {
         role: "Consultoría privada",
         title: "Modelado predictivo en salud y finanzas",
         desc: "Desarrollo de modelos estadísticos avanzados para clientes externos. Mediante técnicas de inferencia estadística y regresión multivariada, logramos identificar patrones ocultos en históricos de datos clínicos y financieros, permitiendo anticipar escenarios futuros con mayor certeza.",
         techs: ["Estadística multivariada", "R language", "Machine Learning", "Pruebas de Hipótesis", "Limpieza de datos"],
-        result: "Incremento del 15% en la precisión de las predicciones, facilitando decisiones basadas en evidencia sólida."
+        result: "Incremento del 15% en la precisión de las predicciones, facilitando decisiones basadas en evidencia sólida.",
+        img1: "img/Proyecto 1_1.png", 
+        img2: "img/Proyecto 1_1.png"
       }
     };
 
@@ -621,6 +630,11 @@
       document.getElementById('m-title').textContent = data.title;
       document.getElementById('m-desc').textContent = data.desc;
       document.getElementById('m-result').innerHTML = `<i class="fas fa-check-circle"></i> ${data.result}`;
+      const img1 = document.getElementById('m-img-1');
+      const img2 = document.getElementById('m-img-2');
+      img1.src = data.img1 || 'https://via.placeholder.com/600x400'; 
+      img2.src = data.img2 || 'https://via.placeholder.com/600x200';
+      
       
       // Llenar pills de tecnología
       const techContainer = document.getElementById('m-techs');
